@@ -9,12 +9,20 @@ public class EstacionamientoTest {
 
     @Test
     public void testRetirarVehiculo() throws Exception {
-        //TODO test
+
     }
 
     @Test
     public void testCalcularPrecio() throws Exception {
-        // TODO test
-    }
+        Cliente cliente = new Cliente("234432", "norma rodriguez");
+        Vehiculo vehiculo = new Vehiculo("aaa111aaa", "ford fiesta", Vehiculo.Tipo.AUTO);
+        cliente.agregarVehiculo(vehiculo);
+        Ticket ticket = new Ticket(cliente, vehiculo);
 
+        ticket.setHoraSalida(ticket.getHoraEntrada().plusHours(2).plusMinutes(30));
+        long duracion = ticket.calcularMinutos();
+        double precio = ticket.calcularPrecio();
+
+
+    }
 }

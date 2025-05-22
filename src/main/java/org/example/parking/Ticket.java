@@ -31,13 +31,20 @@ public class Ticket {
     }
 
     public double calcularPrecio() {
-        // TODO implementar el metodo para calcular el importe a abonar segun el tipo de vehiculo
-        // AUTO -> 100, SUV -> 130, PICKUP -> 180
-        // el importe es por hora redondeando el tiempo hacia arriba,
-        // por ejemplo si estuvo 45 minutos se le tarifa por 60, si estuvo 80 minutos se le tarifa por 120 minutos, etc...
-        // retornar el importe final
+        long minutos = calcularMinutos();
+        long horas = (minutos + 59) / 60;
+        double precio = 0;
+        Vehiculo.Tipo tipo = vehiculo.getTipo();
 
-        return 0;
+        if (tipo == Vehiculo.Tipo.AUTO) {
+            precio = 100;
+        } else if (tipo == Vehiculo.Tipo.SUV) {
+            precio = 130;
+        } else if (tipo == Vehiculo.Tipo.PICKUP) {
+            precio = 180;
+        } else {
+            precio = 0;
+        }
+        return horas * precio;
     }
-
 }
